@@ -1,0 +1,96 @@
+
+import pygame as pg
+
+# Initialize Pygame
+pg.init()
+
+# Constants
+WIDTH, HEIGHT = 800, 600
+PLAYER_SIZE = 50
+BULLET_SIZE = 10
+PLAYER_SPEED = 5
+BULLET_SPEED = 7
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+
+# Set up the screen
+screen = pg.display.set_mode((WIDTH, HEIGHT))
+pg.display.set_caption("1v1 Shooting Game")
+
+# Player class
+class Player:
+    def __init__(self, x, keys, color):
+        self.rect = pg.Rect(x, HEIGHT // 2, PLAYER_SIZE, PLAYER_SIZE)
+        self.keys = keys
+        self.color = color
+        self.health = 100
+
+    def update(self):
+        keys = pg.key.get_pressed()
+        if keys[self.keys[0]] and self.rect.top > 0:
+            self.rect.y -= PLAYER_SPEED
+        if keys[self.keys[1]] and self.rect.bottom < HEIGHT:
+            self.rect.y += PLAYER_SPEED
+
+    def shoot(self):
+        bullet = Bullet(self.rect.centerx, self.rect.top)
+        return bullet
+
+# Bullet class
+class Bullet:
+    def __init__(self, x, y):
+        self.rect = pg.Rect(x - BULLET_SIZE // 2, y - BULLET_SIZE, BULLET_SIZE, BULLET_SIZE)
+
+    def update(self):
+        self.rect.x += BULLET_SPEED
+
+# Create players
+player1 = Player(WIDTH // 4, [pg.K_w, pg.K_s, pg.K_a, pg.K_d, pg.K_SPACE], WHITE)
+player2 = Player(3 * WIDTH // 4, [pg.K_UP, pg.K_DOWN, pg.K_RSHIFT], WHITE)
+
+# Lists to store bullets
+player1_bullets = []
+player2_bullets = []
+
+# Main game loop
+running = True
+clock = pg.time.Clock()
+
+while running:
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+        elif event.type == pg.KEYDOWN:
+            if event.key in player1.keys:
+                player1_bullets.append(player1.shoot())
+            elif event.key in player2.keys:
+                player2_bullets.append(player2.shoot())
+
+    # Update player and bullet positions
+    player1.update()
+    player2.update()
+    for bullet in player1_bullets + player2_bullets:
+        bullet.update()
+
+    # Check for collisions between bullets and players
+    for bullet in player1_bullets + player2_bullets:
+        if bullet.rect.colliderect(player1.rect):
+            player1.health -= 10
+            player1_bullets.remove(bullet)
+        elif bullet.rect.colliderect(player2.rect):
+            player2.health -= 10
+            player2_bullets.remove(bullet)
+
+    # Draw everything
+    screen.fill((0, 0, 0))
+    pg.draw.rect(screen, player1.color, player1.rect)
+    pg.draw.rect(screen, player2.color, player2.rect)
+    for bullet in player1_bullets + player2_bullets:
+        pg.draw.rect(screen, RED, bullet.rect)
+
+    pg.display.flip()
+
+    clock.tick(60)
+
+# Clean up and quit
+pg.quit()
