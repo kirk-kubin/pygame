@@ -1,8 +1,12 @@
-
 import pygame as pg
+import sys
+from animate import *
 from sprites import *
 from pygame.sprite import LayeredUpdates
 pg.init()
+
+IDLE = True
+RUN = False
 
 BLACK = (0, 0, 0)
 WHITE = (255,255,255)
@@ -13,48 +17,45 @@ YELLOW = (255,255,0)
 MAGENTA = (255,0,255)
 CYAN = (0,255,255)
 
-pos_x = 100
-pos_y = 100
-
-size_x = 50
-size_y = 50
-
 screen = pg.display.set_mode((0, 0), pg.FULLSCREEN)
 clock = pg.time.Clock()
-font_size = 36  # Choose the font size
-font = pg.font.Font(None, font_size)  # Use None for the default system font or specify a font file path
-all_sprites = pg.sprite.LayeredUpdates()  # Use LayeredUpdates for proper layering
-enemies = pg.sprite.Group()
-start_time = pg.time.get_ticks()  # Add parentheses to call the function
-playing = True
-bullet = Ranged_attack(pos_x, pos_y)
-player = Player(all_sprites, font)
-all_sprites.add(bullet)
-all_sprites.add(player)
 
+font_size = 36
+font = pg.font.Font(None, font_size)
+
+all_sprites = pg.sprite.LayeredUpdates()
+
+enemies = pg.sprite.Group()
+bullets = pg.sprite.Group()
+player = Player(all_sprites, font)
+flash = pg.sprite.Group()
+
+all_sprites.add(player)
+all_sprites.add(flash)
+
+playing = True
 while playing:
-    clock.tick(120)
+    keys = pg.key.get_pressed()
     for event in pg.event.get():
         if event.type == pg.QUIT:
             playing = False
             pg.quit()
+            sys.exit()
 
-    bullets.update()
+        if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
+            player.attack(pg.key.get_pressed(), screen, player.pos_x, player.pos_y)
 
-    if len(all_sprites) < 10:
-        enemy = Enemy()
-        all_sprites.add(enemy)
-        enemies.add(enemy)
-
+    screen.fill(BLACK)
     all_sprites.update()
+    flash.update()
+    bullets.update()
 
     hits = pg.sprite.spritecollide(player, enemies, True)
     if hits:
         player.hp -= 100
 
-    screen.fill(YELLOW)
     all_sprites.draw(screen)
-
-    player_box = pg.Rect(pos_x, pos_y, size_x, size_y)
     player.draw_ui(screen)
     pg.display.flip()
+
+    clock.tick(120)
