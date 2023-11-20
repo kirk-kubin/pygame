@@ -1,6 +1,5 @@
 import pygame as pg
 import sys
-from animate import *
 from sprites import *
 from pygame.sprite import LayeredUpdates
 pg.init()

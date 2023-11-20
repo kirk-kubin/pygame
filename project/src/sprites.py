@@ -1,29 +1,28 @@
 import pygame as pg
-import spritesheet
 import random
 from pygame.sprite import Group
 
 i = (118,66,138)
 bullets = Group()
-flash_image = pg.image.load("bilder/flash.png")
+flash_image = pg.image.load("project/images/flash/flash.png")
 flash_image = pg.transform.scale(flash_image, (flash_image.get_width()+80, flash_image.get_height()+40))
-flash_image1 = pg.image.load("bilder/flash1.png")
+flash_image1 = pg.image.load("project/images/flash/flash1.png")
 flash_image1 = pg.transform.scale(flash_image1, (flash_image1.get_width()+80, flash_image1.get_height()+40))
-flash_image2 = pg.image.load("bilder/flash2.png")
+flash_image2 = pg.image.load("project/images/flash/flash2.png")
 flash_image2 = pg.transform.scale(flash_image2, (flash_image2.get_width()+80, flash_image2.get_height()+40))
-flash_image3 = pg.image.load("bilder/flash3.png")
+flash_image3 = pg.image.load("project/images/flash/flash3.png")
 flash_image3 = pg.transform.scale(flash_image3, (flash_image3.get_width()+80, flash_image3.get_height()+40))
-flash_image4 = pg.image.load("bilder/flash4.png")
+flash_image4 = pg.image.load("project/images/flash/flash4.png")
 flash_image4 = pg.transform.scale(flash_image4, (flash_image4.get_width()+80, flash_image4.get_height()+40))
-flash_image5 = pg.image.load("bilder/flash5.png")
+flash_image5 = pg.image.load("project/images/flash/flash5.png")
 flash_image5 = pg.transform.scale(flash_image5, (flash_image5.get_width()+80, flash_image5.get_height()+40))
-player_image = pg.image.load("bilder/gun.png")
+player_image = pg.image.load("project/images/gun/gun.png")
 player_image = pg.transform.scale(player_image, (player_image.get_width()+154.55, player_image.get_height()+100))
-player_image1 = pg.image.load("bilder/gun1.png")
+player_image1 = pg.image.load("project/images/gun/gun1.png")
 player_image1 = pg.transform.scale(player_image1, (player_image1.get_width()+154.55, player_image1.get_height()+100))
-player_image2 = pg.image.load("bilder/gun2.png")
+player_image2 = pg.image.load("project/images/gun/gun2.png")
 player_image2 = pg.transform.scale(player_image2, (player_image2.get_width()+154.55, player_image2.get_height()+100))
-player_image3 = pg.image.load("bilder/gun3.png")
+player_image3 = pg.image.load("project/images/gun/gun3.png")
 player_image3 = pg.transform.scale(player_image3, (player_image3.get_width()+154.55, player_image3.get_height()+100))
 
 class Player(pg.sprite.Sprite):
@@ -158,7 +157,7 @@ class Enemy(pg.sprite.Sprite):
         if self.pos_x > -100:
             self.kill()
 
-ranged_image = pg.image.load("bilder/bullet.png")
+ranged_image = pg.image.load("project/images/bullet/bullet.png")
 ranged_image = pg.transform.scale(ranged_image, (ranged_image.get_width()+23.333, ranged_image.get_height()+10))
 class Ranged_attack(pg.sprite.Sprite):
     def __init__(self, player, keys):
