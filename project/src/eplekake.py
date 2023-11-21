@@ -1,50 +1,34 @@
 import pygame as pg
 import sys
 from sprites import *
-from pygame.sprite import LayeredUpdates
-pg.init()
-
-IDLE = True
-RUN = False
+from resources import *
 
 BLACK = (0, 0, 0)
-WHITE = (255,255,255)
-RED = (255,0,0)
-GREEN = (0,255,0)
-BLUE = (0,255,255)
-YELLOW = (255,255,0)
-MAGENTA = (255,0,255)
-CYAN = (0,255,255)
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+WIDTH = 960
+HEIGHT = 540
+bg_img = pg.image.load("project/images/background/bg.png")
+pg.init()
+i = 0
 
-screen = pg.display.set_mode((0, 0), pg.FULLSCREEN)
-clock = pg.time.Clock()
-
-font_size = 36
-font = pg.font.Font(None, font_size)
-
-all_sprites = pg.sprite.LayeredUpdates()
-
-enemies = pg.sprite.Group()
-bullets = pg.sprite.Group()
-player = Player(all_sprites, font)
-flash = pg.sprite.Group()
-
-all_sprites.add(player)
-all_sprites.add(flash)
-
-playing = True
-while playing:
+def game_loop():
+    global i
     keys = pg.key.get_pressed()
     for event in pg.event.get():
         if event.type == pg.QUIT:
-            playing = False
-            pg.quit()
-            sys.exit()
+            return False
 
         if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
-            player.attack(pg.key.get_pressed(), screen, player.pos_x, player.pos_y)
+            player.attack(keys, screen, player.pos_x, player.pos_y)
 
-    screen.fill(BLACK)
+    screen.blit(bg_img,(i,0))
+    screen.blit(bg_img,(WIDTH+i,0))
+    if (i == -(WIDTH*3)):
+        screen.blit(bg_img,(WIDTH+i,0))
+        i = 0
+    i -= 1
+
     all_sprites.update()
     flash.update()
     bullets.update()
@@ -57,4 +41,26 @@ while playing:
     player.draw_ui(screen)
     pg.display.flip()
 
-    clock.tick(120)
+    return True
+
+screen = pg.display.set_mode((WIDTH,HEIGHT))
+clock = pg.time.Clock()
+
+font_size = 36
+font = pg.font.Font(None, font_size)
+
+all_sprites = pg.sprite.LayeredUpdates()
+enemies = pg.sprite.Group()
+bullets = pg.sprite.Group()
+player = Player(all_sprites, font)
+flash = pg.sprite.Group()
+
+all_sprites.add(player)
+all_sprites.add(flash)
+
+playing = True
+while playing:
+    playing = game_loop()
+
+pg.quit()
+sys.exit()
