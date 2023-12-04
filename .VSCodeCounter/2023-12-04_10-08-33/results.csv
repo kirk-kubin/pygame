@@ -1,0 +1,15 @@
+"filename", "language", "Python", "comment", "blank", "total"
+"c:\github\pygame\animate.py", "Python", 15, 0, 4, 19
+"c:\github\pygame\project\src\__init__.py", "Python", 0, 0, 1, 1
+"c:\github\pygame\project\src\classes\__init__.py", "Python", 0, 0, 1, 1
+"c:\github\pygame\project\src\classes\enemy.py", "Python", 164, 1, 24, 189
+"c:\github\pygame\project\src\classes\enemy_attacks.py", "Python", 47, 0, 12, 59
+"c:\github\pygame\project\src\classes\flash.py", "Python", 31, 0, 6, 37
+"c:\github\pygame\project\src\classes\player.py", "Python", 133, 2, 22, 157
+"c:\github\pygame\project\src\classes\ranged_attack.py", "Python", 43, 0, 8, 51
+"c:\github\pygame\project\src\eplekake.py", "Python", 102, 0, 20, 122
+"c:\github\pygame\project\src\resources.py", "Python", 69, 0, 4, 73
+"c:\github\pygame\project\src\sprites.py", "Python", 5, 0, 0, 5
+"c:\github\pygame\pærekake.py", "Python", 84, 0, 18, 102
+"c:\github\pygame\spritesheet.py", "Python", 10, 0, 2, 12
+"Total", "-", 703, 3, 122, 828

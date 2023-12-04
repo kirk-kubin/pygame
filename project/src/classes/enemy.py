@@ -15,7 +15,6 @@ class Gunner(Sprite):
         self.last_attack_time = 0
         self.down = True
         self.up = False
-        self.can_shoot = False
         self.pos_x = self.screen_width + 100
         self.pos_y = random.randint(100,self.screen_height - 100)
         self.speed = 3
@@ -46,7 +45,6 @@ class Gunner(Sprite):
 
     def update(self):
         self.animate()
-        self.attack()
 
         if self.hp <= 0:
             self.death = True
@@ -61,6 +59,7 @@ class Gunner(Sprite):
             self.shooting = True
             self.idle = False
         if self.shooting:
+            self.attack()
             self.speed = 1
             if self.down:
                 self.pos_y += self.speed
@@ -120,7 +119,7 @@ class Bomber(Sprite):
         self.current_frame = 0
         self.last_update = 0
         self.death_counter = 0
-        self.attack_cooldown = 400
+        self.attack_cooldown = 4000
         self.last_attack_time = 0
 
         self.pos_x = self.screen_width + 100

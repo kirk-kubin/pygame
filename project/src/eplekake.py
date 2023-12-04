@@ -46,19 +46,19 @@ def game_loop():
     bullets_collide = pg.sprite.groupcollide(player_bullets_group,gunner_bullets_group,False,True)
     if bullets_collide:
         player.hp += 0
-    bomb_collide = pg.sprite.groupcollide(player_bullets_group,bomber_bombs_group,True,False)
+    bomb_collide = pg.sprite.groupcollide(player_bullets_group,bomber_bombs_group,False,True)
     if bomb_collide:
         player.hp += 0
 
     for bullet in player_bullets_group:
         gunner_hits = pg.sprite.spritecollide(bullet,gunner_group,None)
         for gunner in gunner_hits:
-            bullet.kill()
             gunner.hp -= 5
+            bullet.kill()
         bomber_hits = pg.sprite.spritecollide(bullet,bomber_group,None)
         for bomber in bomber_hits:
-            bullet.kill()
             bomber.hp -= 5
+            bullet.kill()
 
     screen.blit(bg_img, (bg_x, 0))
     screen.blit(bg_img, (bg_x - WIDTH * 2, 0))

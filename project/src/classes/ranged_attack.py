@@ -13,6 +13,8 @@ class Ranged_attack(Sprite):
         self.pos_y = player.rect.centery - 45
         self.image = ranged_image
         self.rect = self.image.get_rect()
+        self.rect.x = self.pos_x
+        self.rect.y = self.pos_y
 
         self.screen_width = 960
         self.screen_height = 540

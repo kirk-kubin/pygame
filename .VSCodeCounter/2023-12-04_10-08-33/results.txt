@@ -1,0 +1,42 @@
+Date : 2023-12-04 10:08:33
+Directory : c:\github\pygame
+Total : 13 files,  703 codes, 3 comments, 122 blanks, all 828 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Python   |         13 |        703 |          3 |        122 |        828 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                  | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                     |         13 |        703 |          3 |        122 |        828 |
+| . (Files)                                             |          3 |        109 |          0 |         24 |        133 |
+| project                                               |         10 |        594 |          3 |         98 |        695 |
+| project\src                                           |         10 |        594 |          3 |         98 |        695 |
+| project\src (Files)                                   |          4 |        176 |          0 |         25 |        201 |
+| project\src\classes                                   |          6 |        418 |          3 |         73 |        494 |
++-------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                              | language | code       | comment    | blank      | total      |
++-------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\github\pygame\animate.py                           | Python   |         15 |          0 |          4 |         19 |
+| c:\github\pygame\project\src\__init__.py              | Python   |          0 |          0 |          1 |          1 |
+| c:\github\pygame\project\src\classes\__init__.py      | Python   |          0 |          0 |          1 |          1 |
+| c:\github\pygame\project\src\classes\enemy.py         | Python   |        164 |          1 |         24 |        189 |
+| c:\github\pygame\project\src\classes\enemy_attacks.py | Python   |         47 |          0 |         12 |         59 |
+| c:\github\pygame\project\src\classes\flash.py         | Python   |         31 |          0 |          6 |         37 |
+| c:\github\pygame\project\src\classes\player.py        | Python   |        133 |          2 |         22 |        157 |
+| c:\github\pygame\project\src\classes\ranged_attack.py | Python   |         43 |          0 |          8 |         51 |
+| c:\github\pygame\project\src\eplekake.py              | Python   |        102 |          0 |         20 |        122 |
+| c:\github\pygame\project\src\resources.py             | Python   |         69 |          0 |          4 |         73 |
+| c:\github\pygame\project\src\sprites.py               | Python   |          5 |          0 |          0 |          5 |
+| c:\github\pygame\pærekake.py                          | Python   |         84 |          0 |         18 |        102 |
+| c:\github\pygame\spritesheet.py                       | Python   |         10 |          0 |          2 |         12 |
+| Total                                                 |          |        703 |          3 |        122 |        828 |
++-------------------------------------------------------+----------+------------+------------+------------+------------+

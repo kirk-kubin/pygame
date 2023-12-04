@@ -13,6 +13,8 @@ class Gunner_attack(Sprite):
         self.pos_y = gunner.rect.centery - 40
         self.image = bullet_image
         self.rect = self.image.get_rect()
+        self.rect.x = self.pos_x
+        self.rect.y = self.pos_y
 
         self.screen_width = 960
         self.screen_height = 540
@@ -28,16 +30,18 @@ class Gunner_attack(Sprite):
         if self.rect.x < -self.screen_width:
             self.kill()
 
-bomb_image = pg.image.load("project/images/enemies/projectiles/bomb.png")
-bomb_image = pg.transform.scale(bomb_image, (bomb_image.get_width() + 20, bomb_image.get_height() + 40))
 
 class Bomber_attack(Sprite):
     def __init__(self, bomber):
         super().__init__()
+        bomb_image = pg.image.load("project/images/enemies/projectiles/bomb.png")
+        bomb_image = pg.transform.scale(bomb_image, (bomb_image.get_width() + 20, bomb_image.get_height() + 40))
         self.pos_x = bomber.rect.right - 160
         self.pos_y = bomber.rect.centery - 40
         self.image = bomb_image
         self.rect = self.image.get_rect()
+        self.rect.x = self.pos_x
+        self.rect.y = self.pos_y
 
         self.screen_width = 960
         self.screen_height = 540
