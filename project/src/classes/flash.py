@@ -18,7 +18,7 @@ class Flash(Sprite):
         ]
 
     def update(self):
-        self.animate()  # This line is causing the error
+        self.animate()
 
         self.pos_x = self.player.rect.right + 45
         self.pos_y = self.player.rect.centery - 38
